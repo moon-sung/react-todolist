@@ -32,6 +32,21 @@ function TodoConatiner() {
 
   const handelClickCheckBtn = (e) => {
     console.log(e.target.dataset.id)
+    const index = e.target.dataset.id;
+    const copytoggle = [...toggle];
+    const copycom = [...com];
+    if( !copytoggle[index]){
+      copytoggle[index] = "doit"
+    }else{
+      copytoggle[index] = ""
+    }
+    if ( !copycom[index]){
+      copycom[index] = "final"
+    }else{
+      copycom[index] = ""
+    }
+    setToggle(copytoggle)
+    setCom(copycom)
   }
 
   return (
