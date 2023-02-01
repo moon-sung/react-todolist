@@ -2,23 +2,24 @@ import React from "react";
 
 const List = ({
   onClickCheckBtn,
-  com,
+  onClickDelBtn,
+  btndesign,
   index,
-  toggle,
+  textdesign,
   todolist,
 }) =>(
   <div className="listDisplay" style={{ display: "flex" }}>
-    <button className={`checkBtn ${com[index]}`} data-id={index} onClick={onClickCheckBtn}>
+    <button className={`checkBtn ${btndesign[index]}`} data-id={index} onClick={onClickCheckBtn}>
       ✔️
     </button>
 
-    <p className={`grow ${toggle[index]}`} style={{ paddingLeft: "5px" }}>
+    <p className={`grow ${textdesign[index]}`} style={{ paddingLeft: "5px" }}>
       {todolist[index]}
     </p>
-{/* 
-    <button className="delBtn" onClick={onClickDelBtn}>
+
+    <button className="delBtn" data-id={index} onClick={onClickDelBtn}>
       x
-    </button> */}
+    </button>
   </div>
 )
 

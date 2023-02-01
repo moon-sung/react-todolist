@@ -5,9 +5,9 @@ function Today(props){
   let day = date.getDate();
 
   
-  let toggle = props.toggle;
-  let completeTodolist = toggle.filter( toggle => toggle == 'doit') //완료개수
-  let willbe = toggle.filter( toggle => toggle == '') //남은 개수
+  let textdesign = props.textdesign;
+  let completeTodolist = textdesign.filter( textdesign => textdesign == 'doit') //완료개수
+  let willbe = textdesign.filter( textdesign => textdesign == '') //남은 개수
 
   return(
     <div>

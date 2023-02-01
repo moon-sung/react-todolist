@@ -4,20 +4,21 @@ import List from "../../component/List";
 import Today from "../../component/Today";
 
 const TodoPresenter = ({
-  toggle,
+  textdesign,
   todolist,
   addlist,
-  com,
+  btndesign,
   setAddlist,
   setTodolist,
-  setToggle,
-  setCom,
+  setTextdesign,
+  setBtndesign,
   onClickAddBtn,
-  onClickCheckBtn
+  onClickCheckBtn,
+  onClickDelBtn
 }) => (
   <div className="grey-bg">
     <div className="white-bg">
-      <Today toggle={toggle} />
+      <Today textdesign={textdesign} />
       <hr />
       <div>
         <AddBtn
@@ -33,11 +34,12 @@ const TodoPresenter = ({
               setTodolist={setTodolist}
               index={index}
               key={index}
-              com={com}
-              setCom={setCom}
-              setToggle={setToggle}
-              toggle={toggle}
+              btndesign={btndesign}
+              setBtndesign={setBtndesign}
+              setTextdesign={setTextdesign}
+              textdesign={textdesign}
               onClickCheckBtn={onClickCheckBtn}
+              onClickDelBtn={onClickDelBtn}
             />
           ))
         }

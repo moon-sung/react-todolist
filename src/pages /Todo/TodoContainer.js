@@ -5,8 +5,8 @@ import TodoPresenter from "./TodoPresenter";
 function TodoConatiner() {
 
   const [addlist, setAddlist] = useState('');
-  const [toggle, setToggle] = useState([]); //투두리스트 완료버튼 클릭 시 p태그 클래스명
-  const [com, setCom] = useState([]); //투두리스트 완료버튼 클릭 시 버튼 클래스명
+  const [textdesign, setTextdesign] = useState([]); //투두리스트 완료버튼 클릭 시 p태그 클래스명
+  const [btndesign, setBtndesign] = useState([]); //투두리스트 완료버튼 클릭 시 버튼 클래스명
   const [todolist, setTodolist] = useState([]);
 
   //로컬스토리지에 투두리스트 목록을 넣을 배열 생성
@@ -21,46 +21,66 @@ function TodoConatiner() {
 
   const handleClickAddBtn = () => {
     const addedTodolist = [...todolist, addlist]
-    const copyToggle = [...toggle]
-    copyToggle.shift('')
+    const copytextdesign = [...textdesign]
+    copytextdesign.shift('')
     setTodolist(addedTodolist); //투두리스트 데이터 저장
     localStorage.setItem("todolist", JSON.stringify(addedTodolist)); //이거없으니 local에 저장이 안됨
-    setToggle(copyToggle)
-    console.log(copyToggle)
-    //console.log(toggle)
+    setTextdesign(copytextdesign)
+    console.log(copytextdesign)
+    //console.log(textdesign)
   }
 
   const handelClickCheckBtn = (e) => {
     console.log(e.target.dataset.id)
     const index = e.target.dataset.id;
-    const copytoggle = [...toggle];
-    const copycom = [...com];
-    if( !copytoggle[index]){
-      copytoggle[index] = "doit"
+    const copytextdesign = [...textdesign];
+    const copybtndesign = [...btndesign];
+    if( !copytextdesign[index]){
+      copytextdesign[index] = "doit"
     }else{
-      copytoggle[index] = ""
+      copytextdesign[index] = ""
     }
-    if ( !copycom[index]){
-      copycom[index] = "final"
+    if ( !copybtndesign[index]){
+      copybtndesign[index] = "final"
     }else{
-      copycom[index] = ""
+      copybtndesign[index] = ""
     }
-    setToggle(copytoggle)
-    setCom(copycom)
+    setTextdesign(copytextdesign)
+    setBtndesign(copybtndesign)
+  }
+
+  const handelClickDelBtn= (e) =>{
+    const index = e.target.dataset.id;
+    const items = JSON.parse(localStorage.getItem("todolist"));
+
+    //todolist에 저장된 것들 중 삭제버튼을 누른 데이터를 제외하고 필터링
+    const changeitems = items.filter(items => items !== todolist[index]) //이거때문에 삭제버튼 클릭한 todolist의 값이 일치하면 모두 삭제
+    localStorage.setItem("todolist", JSON.stringify(changeitems), []);
+    setTodolist(changeitems); //다시저장
+
+    const copytextdesign = [...textdesign];
+    copytextdesign.splice(index, 1); //투두리스트 삭제버튼 클릭시 textdesign값도 같이 삭제
+
+    const copybtndesign = [...btndesign];
+    copybtndesign.splice(index, 1); //투두리스트 삭제버튼 클릭시 btndesign값도 같이 삭제
+
+    setTextdesign(copytextdesign);
+    setBtndesign(copybtndesign);
   }
 
   return (
     <TodoPresenter
-      toggle={toggle}
+      textdesign={textdesign}
       todolist={todolist}
       addlist={addlist}
-      com={com}
+      btndesign={btndesign}
       setAddlist={setAddlist}
       setTodolist={setTodolist}
-      setToggle={setToggle}
-      setCom={setCom}
+      setTextdesign={setTextdesign}
+      setBtndesign={setBtndesign}
       onClickAddBtn={handleClickAddBtn}
       onClickCheckBtn = {handelClickCheckBtn}
+      onClickDelBtn = {handelClickDelBtn}
     />
   );
 }
