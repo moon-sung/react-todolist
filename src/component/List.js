@@ -8,15 +8,15 @@ const List = ({
   todolist,
 }) =>(
   <div className="listDisplay" style={{ display: "flex" }}>
-    <button className={`checkBtn ${com[index]}`} onClick={onClickCheckBtn(index)}>
+    <button className={`checkBtn ${com[index]}`} data-id={index} onClick={onClickCheckBtn}>
       ✔️
     </button>
 
     <p className={`grow ${toggle[index]}`} style={{ paddingLeft: "5px" }}>
       {todolist[index]}
     </p>
-
-    {/* <button className="delBtn" onClick={onClickDelBtn}>
+{/* 
+    <button className="delBtn" onClick={onClickDelBtn}>
       x
     </button> */}
   </div>

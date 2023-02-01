@@ -30,37 +30,8 @@ function TodoConatiner() {
     //console.log(toggle)
   }
 
-  const handelClickCheckBtn = (index) => {
-    const del = toggle.splice(index, 1)
-    //let delToggle = [...del]
-
-    //console.log(delToggle)
-    // let copytoggle = [...toggle];
-    // let copycom = [...com];
-
-    // copytoggle.map((toggle, index)=>{
-    //   if(!copytoggle[index]){
-    //     copytoggle[index]="doit"
-    //   }
-    // })
-    // console.log(copytoggle)
-    // setToggle(copytoggle)
-
-    // copycom.map((com, index)=>{
-    //   if(!copycom[index]){
-    //     copycom[index]="final"
-    //   }
-    // })
-    // setCom(copycom)
-    // console.log(copytoggle)
-
-
-    // // eslint-disable-next-line no-lone-blocks
-    // { copytoggle[props.index] == "" ? copytoggle[props.index] = "doit" : copytoggle[props.index] = "" } //완료버튼 클릭 시 toggle을 doit으로 아니면 ''
-    // // eslint-disable-next-line no-lone-blocks
-    // { copycom[props.index] == "" ? copycom[props.index] = "final" : copycom[props.index] = "" } //완료버튼 클릭 시 com을 final로 아니면 ''
-    // props.setToggle(copytoggle);
-    // props.setCom(copycom);
+  const handelClickCheckBtn = (e) => {
+    console.log(e.target.dataset.id)
   }
 
   return (
