@@ -9,7 +9,8 @@ const List = ({
   todolist,
 }) =>(
   <div className="listDisplay" style={{ display: "flex" }}>
-    <button className={`checkBtn ${btndesign[index]}`} data-id={index} onClick={onClickCheckBtn}>
+    <button className={`checkBtn ${btndesign[index]}`} onClick={onClickCheckBtn(index)}>
+    {/* <button className={`checkBtn ${btndesign[index]}`} data-id={index} onClick={(event)=>{}}> */}
       ✔️
     </button>
 
@@ -17,7 +18,7 @@ const List = ({
       {todolist[index]}
     </p>
 
-    <button className="delBtn" data-id={index} onClick={onClickDelBtn}>
+    <button className="delBtn" onClick={onClickDelBtn(index)}>
       x
     </button>
   </div>

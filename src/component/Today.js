@@ -1,13 +1,14 @@
-function Today(props){
-  let date = new Date()
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
+import React from 'react'
 
-  
-  let textdesign = props.textdesign;
-  let completeTodolist = textdesign.filter( textdesign => textdesign == 'doit') //완료개수
-  let willbe = textdesign.filter( textdesign => textdesign == '') //남은 개수
+const Today = (
+  {textdesign}
+)=>{
+  const date = new Date()
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const completeTodolist = textdesign.filter( textdesign => textdesign === 'doit') //완료개수
+  const willbe = textdesign.filter( textdesign => textdesign === '') //남은 개수
 
   return(
     <div>

@@ -22,17 +22,18 @@ function TodoConatiner() {
   const handleClickAddBtn = () => {
     const addedTodolist = [...todolist, addlist]
     const copytextdesign = [...textdesign]
-    copytextdesign.shift('')
+    const copybtndesign = [...btndesign]
+    copytextdesign.unshift("")
+    copybtndesign.unshift("")
     setTodolist(addedTodolist); //투두리스트 데이터 저장
     localStorage.setItem("todolist", JSON.stringify(addedTodolist)); //이거없으니 local에 저장이 안됨
     setTextdesign(copytextdesign)
-    console.log(copytextdesign)
-    //console.log(textdesign)
+    console.log(textdesign)
   }
 
-  const handelClickCheckBtn = (e) => {
-    console.log(e.target.dataset.id)
-    const index = e.target.dataset.id;
+//이중에로우
+  const handelClickCheckBtn = (index) => () => {
+    console.log(index)
     const copytextdesign = [...textdesign];
     const copybtndesign = [...btndesign];
     if( !copytextdesign[index]){
@@ -49,23 +50,22 @@ function TodoConatiner() {
     setBtndesign(copybtndesign)
   }
 
-  const handelClickDelBtn= (e) =>{
-    const index = e.target.dataset.id;
+  const handelClickDelBtn= (index) => () =>{
     const items = JSON.parse(localStorage.getItem("todolist"));
+    const copytextdesign = [...textdesign];
+    const copybtndesign = [...btndesign];
 
     //todolist에 저장된 것들 중 삭제버튼을 누른 데이터를 제외하고 필터링
     const changeitems = items.filter(items => items !== todolist[index]) //이거때문에 삭제버튼 클릭한 todolist의 값이 일치하면 모두 삭제
     localStorage.setItem("todolist", JSON.stringify(changeitems), []);
     setTodolist(changeitems); //다시저장
 
-    const copytextdesign = [...textdesign];
     copytextdesign.splice(index, 1); //투두리스트 삭제버튼 클릭시 textdesign값도 같이 삭제
-
-    const copybtndesign = [...btndesign];
     copybtndesign.splice(index, 1); //투두리스트 삭제버튼 클릭시 btndesign값도 같이 삭제
 
     setTextdesign(copytextdesign);
     setBtndesign(copybtndesign);
+    
   }
 
   return (
