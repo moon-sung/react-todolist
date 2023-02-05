@@ -14,7 +14,8 @@ const TodoPresenter = ({
   setBtndesign,
   onClickAddBtn,
   onClickCheckBtn,
-  onClickDelBtn
+  onClickDelBtn,
+  onCheckEnter
 }) => (
   <div className="grey-bg">
     <div className="white-bg">
@@ -24,6 +25,7 @@ const TodoPresenter = ({
         <AddBtn
           setAddlist={setAddlist}
           onClickAddBtn={onClickAddBtn}
+          onCheckEnter={onCheckEnter}
         />
       </div>
       <div>
