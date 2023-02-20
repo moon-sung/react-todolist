@@ -26,6 +26,10 @@ function TodoConatiner() {
   }
 
   const handleClickAddBtn = () => {
+    if(todolist.includes(addlist)){
+      alert('이미존재하는 내용입니다')
+    }
+    else{
     const addedTodolist = [...todolist, addlist];
     const copytextdesign = [...textdesign];
     const copybtndesign = [...btndesign];
@@ -35,6 +39,7 @@ function TodoConatiner() {
     localStorage.setItem("todolist", JSON.stringify(addedTodolist)); //이거없으니 local에 저장이 안됨
     setTextdesign(copytextdesign);
     console.log(textdesign);
+    }
   };
 
   //이중에로우
